@@ -83,6 +83,7 @@ fun Calculator(modifier: Modifier = Modifier) {
 
     val onOperationClick: (String) -> Unit = { op ->
         operation = op
+        result += op
         previousNumber = currentInput
         currentInput = ""
     }
