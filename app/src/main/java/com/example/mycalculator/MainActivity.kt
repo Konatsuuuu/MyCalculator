@@ -64,6 +64,7 @@ fun Calculator(modifier: Modifier = Modifier) {
     var currentInput by remember { mutableStateOf("") }
     var previousNumber by remember { mutableStateOf("") }
     var operation by remember { mutableStateOf("") }
+    var display by remember { mutableStateOf("") }
 
     val performCalculation: () -> Unit = {
         val prevNum = previousNumber.toIntOrNull() ?: 0
@@ -73,17 +74,20 @@ fun Calculator(modifier: Modifier = Modifier) {
             "-" -> result = (prevNum - currentNum).toString()
         }
         currentInput = result
+        display = result
         operation = ""
     }
 
     val onNumberClick: (String) -> Unit = { number ->
         currentInput += number
+        display += number
         result = currentInput
     }
 
     val onOperationClick: (String) -> Unit = { op ->
         operation = op
         result += op
+        display += op
         previousNumber = currentInput
         currentInput = ""
     }
@@ -101,7 +105,7 @@ fun Calculator(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
             Text(
-                text = "$result", fontSize = 24.sp, modifier = Modifier.padding(8.dp)
+                text = "$display", fontSize = 24.sp, modifier = Modifier.padding(8.dp)
             )
             Row (modifier = modifier
                 .fillMaxWidth()
