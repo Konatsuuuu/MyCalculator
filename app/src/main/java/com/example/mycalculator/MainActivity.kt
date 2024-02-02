@@ -83,7 +83,6 @@ fun Calculator(modifier: Modifier = Modifier) {
 
     val onOperationClick: (String) -> Unit = { op ->
         operation = op
-        currentInput += op
         previousNumber = currentInput
         currentInput = ""
     }
@@ -176,7 +175,7 @@ fun Calculator(modifier: Modifier = Modifier) {
         }
         Column(modifier = Modifier
             .padding(horizontal = 16.dp)
-            .padding(start = 320.dp),
+            .padding(start = 280.dp),
             verticalArrangement = Arrangement.Center,
           horizontalAlignment = Alignment.CenterHorizontally)
         {
