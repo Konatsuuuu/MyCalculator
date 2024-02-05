@@ -97,6 +97,7 @@ fun Calculator(modifier: Modifier = Modifier) {
         currentInput = ""
         previousNumber = ""
         operation = ""
+        display = ""
     }
 
 
